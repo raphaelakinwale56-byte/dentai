@@ -444,21 +444,18 @@ const LoginPage = ({ onLogin }: { onLogin: (user: any) => void }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        onLogin(data.user);
-      } else {
-        setError(data.error);
-      }
-    } catch (err) {
-      setError('Connection failed');
-    } finally {
-      setLoading(false);
+      try {
+  // ✅ Demo login (no backend needed)
+  if (email && password) {
+    onLogin({ email });
+  } else {
+    setError("Invalid credentials");
+  }
+} catch (err) {
+  setError("Connection failed");
+} finally {
+  setLoading(false);
+}
     }
   };
 
