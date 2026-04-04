@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   }
 
   // 🔒 Restrict origin (update if needed)
-  const allowedOrigin = "https://assistant-delta-two.vercel.app";
+  const allowedOrigin = "https://dentai-iota.vercel.app";
   if (req.headers.origin && req.headers.origin !== allowedOrigin) {
     return res.status(403).json({ error: "Forbidden" });
   }
